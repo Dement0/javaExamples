@@ -35,9 +35,9 @@ public class Contatto {
         }
     }
     
-//    public int hashCode(){
-//        return Objects.hash(nome, cognome, telefono);
-//    }
+    public int hashCode(){
+        return Objects.hash(nome, cognome, telefono);
+    }
 	
 	// metodi che verranno ridefiniti nelle sottoclassi
 	public void stampaSeAmico(){}

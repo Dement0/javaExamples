@@ -1,7 +1,8 @@
 # Basic PhoneBook Example
 
--Contatto super class has 2 childs:
---Amico
---Collega
--Rubrica implements the real PhoneBook as a LinledList
--RubricaMain is the main program
+- Contatto super class has 2 childs:
+  - Amico
+  - Collega
+- Rubrica implements the PhoneBook as a LinkedList
+- RubricaMain is the main program
+- Basic implementation of `equals(), toString() and hashCode()` methods
