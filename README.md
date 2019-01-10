@@ -1,8 +1,9 @@
-# Basic PhoneBook Example
+# Java Examples
 
-- Contatto super class has 2 childs:
-  - Amico
-  - Collega
-- Rubrica implements the PhoneBook as a LinkedList
-- RubricaMain is the main program
-- Basic implementation of `equals(), toString() and hashCode()` methods
+- Contains various projects written in Java 8
+- Basic implementations of
+  - Constructors
+  - Setters & Getters
+  - Utilities
+  - Overrides
+- Collections Framework implementations
