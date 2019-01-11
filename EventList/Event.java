@@ -1,6 +1,6 @@
 // Represents an Event generated from user in an OS
 
-public abstract class Event() {
+public abstract class Event {
 	
 	// Fields
 	protected int eventId;
@@ -8,10 +8,10 @@ public abstract class Event() {
 	
 	// Constructors
 	public Event() {
-		this(500, 0);
+		this(500, "-");
 	}
 	
-	public Event(int eventId, int eventDescription) {
+	public Event(int eventId, String eventDescription) {
 		this.eventId = eventId;
 		this.eventDescription = eventDescription;
 	}
@@ -29,10 +29,8 @@ public abstract class Event() {
 		return this.eventId;
 	}
 	
-	public string getEventDescription() {
+	public String getEventDescription() {
 		return this.eventDescription;
 	}
-	
-	// Abstract methods
 	
 }

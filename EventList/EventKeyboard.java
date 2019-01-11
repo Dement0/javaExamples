@@ -6,13 +6,12 @@ public class EventKeyboard extends Event {
 	
 	// Constructors
 	public EventKeyboard() {
-		super();
-		this(600, 0);
+		this(500, "-", 600, 0);
 	}
 	
 	public EventKeyboard(int eventId, String eventDescription, int keyboardCode, int modificatorState) {
 		super(eventId, eventDescription);
-		this.keyboardCode = keyboardCode
+		this.keyboardCode = keyboardCode;
 		this.modificatorState = modificatorState;
 	}
 	
@@ -34,6 +33,30 @@ public class EventKeyboard extends Event {
 	}
 	
 	// Methods
+	@Override
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+	
+	@Override
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
+	}
+	
+	@Override
+	public int getEventId() {
+		return this.eventId;
+	}
+	
+	@Override
+	public String getEventDescription() {
+		return this.eventDescription;
+	}
+
 	
 	// Utilities
+	@Override
+	public String toString() {
+		return ("Event id: " + this.getEventId() + ", Event Description: " + getEventDescription() + ", Keyboard code: " + this.getKeyboardCode() + ", Modificator state: " + this.getModificatorState());
+	}
 }
