@@ -58,7 +58,7 @@ public class Set {
 	public String toString() {
 		String result = "";
 		for(String history : setHistory) {
-			result += history;
+			result += history + ", ";
 		}
 		return result;
 	}
