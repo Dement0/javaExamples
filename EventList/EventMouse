@@ -13,9 +13,9 @@ public class EventMouse extends Event {
 	
 	public EventMouse(int eventId, String eventDescription, int mousePositionX, int mousePositionY, int pressState) {
 		super(eventId, eventDescription);
-		setMousePositionX(mousePositionX);
-		setMousePositionY(mousePositionY);
-		setPressState(pressState);
+		this.mousePositionX = mousePositionX;
+		this.mousePositionY = mousePositionY;
+		this.pressState = pressState;
 	}
 	
 	// Setters & Getters
