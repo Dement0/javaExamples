@@ -1,0 +1,49 @@
+public class EventMouse extends Event {
+	
+	// Fields
+	private int mousePositionX;
+	private int mousePositionY;
+	private int pressState;
+	
+	// Constructors
+	public EventMouse() {
+		super();
+		this(0, 0, 0);
+	}
+	
+	public EventMouse(int eventId, String eventDescription, int mousePositionX, int mousePositionY, int pressState) {
+		super(eventId, eventDescription);
+		setMousePositionX(mousePositionX);
+		setMousePositionY(mousePositionY);
+		setPressState(pressState);
+	}
+	
+	// Setters & Getters
+	public void setMousePositionX(int mousePositionX) {
+		this.mousePositionX = mousePositionX;
+	}
+	
+	public void setMousePositionY(int mousePositionY) {
+		this.mousePositionY = mousePositionY;
+	}
+	
+	public void setPressState(int pressState) {
+		this.pressState = pressState;
+	}
+	
+	public int getMousePositionX() {
+		return this.mousePositionX;
+	}
+	
+	public int getMousePositionY() {
+		return this.mousePositionY;
+	}
+	
+	public int getPressState() {
+		return this.pressState;
+	}
+	
+	// Methods
+	
+	// Utilities
+}
