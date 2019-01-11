@@ -12,8 +12,8 @@ public abstract class Event() {
 	}
 	
 	public Event(int eventId, int eventDescription) {
-		setEventId(eventId);
-		setEventDescription(eventDescription);
+		this.eventId = eventId;
+		this.eventDescription = eventDescription;
 	}
 	
 	// Setters & Getters
@@ -34,6 +34,5 @@ public abstract class Event() {
 	}
 	
 	// Abstract methods
-  // TODO
 	
 }
