@@ -12,8 +12,8 @@ public class EventKeyboard extends Event {
 	
 	public EventKeyboard(int eventId, String eventDescription, int keyboardCode, int modificatorState) {
 		super(eventId, eventDescription);
-		setKeyboardCode(keyboardCode);
-		setModificatorState(modificatorState);
+		this.keyboardCode = keyboardCode
+		this.modificatorState = modificatorState;
 	}
 	
 	// Setters & Getters
