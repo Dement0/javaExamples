@@ -28,12 +28,14 @@ public class EventManager {
 			  modificatorState = Integer.parseInt(scanner.next());
 			  // Create the EventKeyboard object
 			  Event keyboardEvent = new EventKeyboard(eventId, eventDescription, keyboardCode, modificatorState);
-			  // Offer it to the LinkedList
-			  if(eventQueue.offer(keyboardEvent)) {
+			  // Add it to the LinkedList
+			  try {
+			      eventQueue.add(keyboardEvent);
 			      System.out.println("Event created.");
 			  }
-			  else {
+			  catch(IllegalStateException exc) {
 			      System.out.println("Error, try again.");
+			      exc.printStackTrace();
 			  }
 			  break;
 		case "2": System.out.print("Event id: ");
@@ -48,12 +50,14 @@ public class EventManager {
 			  pressState = Integer.parseInt(scanner.next());
 			  // Create the EventMouse object
 			  Event mouseEvent = new EventMouse(eventId, eventDescription, mousePositionX, mousePositionY, pressState);
-			  // Offer it to the LinkedList
-			  if(eventQueue.offer(mouseEvent)) {
+			  // Add it to the LinkedList
+			  try {
+			      eventQueue.add(mouseEvent);
 			      System.out.println("Event created.");
 			  }
-			  else {
+			  catch (IllegalStateException exc) {
 			      System.out.println("Error, try again.");
+			      exc.printStackTrace();
 			  }
 			  break;
 		case "3": if(eventQueue.peek() != null) {
