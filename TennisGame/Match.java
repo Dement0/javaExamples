@@ -1,5 +1,7 @@
 // Representes a Tennis match
 
+import java.util.Objects;
+
 public class Match {
 	
 	// Attributes
@@ -63,6 +65,7 @@ public class Match {
 	// Methods
 	public boolean hasSet3() {
 		// Determines if Match has set3
+		// If getSet3() returns null, means that set3 object hasn't been created
 		return (this.getSet3() != null);
 	}
 	
@@ -72,15 +75,20 @@ public class Match {
 		// TODO
 		// Determine if any of the players has won the match
 		// If not play the third set
+		if(this.getSet1().getWinner() != this.getSet2().getWinner()) {
+			// Start set3 object
+			this.setSet3();
+			this.getSet3().play();
+		}
 	}
 	
 	// Utilities
 	@Override
 	public String toString() {
 		String result = "";
-		result += "Simulazione set 1: vince " + this.getSet1.toString() + "\n";
-		result += "Simulazione set 2: vince " + this.getSet2().toString() + "\n";
-		result += (this.hasSet3() ? "Simulazione set 3: vince " + this.getSet3().toString() + "\n" : "");
+		result += "Simulation set 1: winner - " + (this.getSet1().getWinner() == 1 ? this.getPlayer1() : this.getPlayer2()) + ": " + this.getSet1().toString() + "\n";
+		result += "Simulation set 2: winner - " + (this.getSet2().getWinner() == 1 ? this.getPlayer1() : this.getPlayer2()) + ": " + this.getSet2().toString() + "\n";
+		result += (this.hasSet3() ? ("Simulation set 3: winner - " + (this.getSet1().getWinner() == 1 ? this.getPlayer1() : this.getPlayer2()) + ": " + this.getSet3().toString() + "\n") : "");
 		return result;
 	}
 	
@@ -92,11 +100,11 @@ public class Match {
 		// Cast if to Match
 		Match otherMatch = (Match) other;
 		return ((this.getPlayer1() == otherMatch.getPlayer1() && this.getPlayer2() == otherMatch.getPlayer2()) && 
-				 this.getSet1() == otherMatch.getSet1() && this.getSet2() == otherMatch.getSet2()));
+				 (this.getSet1() == otherMatch.getSet1() && this.getSet2() == otherMatch.getSet2()));
 	}
 	
 	@Override
 	public int hashCode() {
-		return 31 * this.getPlayer1() * this.getPlayer2();
+		return 31 * Objects.hash(this.getPlayer1(), this.getPlayer2(), this.getSet1(), this.getSet2());
 	}
 }

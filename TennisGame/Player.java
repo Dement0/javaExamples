@@ -1,5 +1,7 @@
 // Representes a Tennis player
 
+import java.util.Objects;
+
 public class Player {
 	// Fields
 	private int classification;
@@ -33,11 +35,11 @@ public class Player {
 		return this.classification;
 	}
 	
-	public int getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	public int getSurname() {
+	public String getSurname() {
 		return this.surname;
 	}
 	
@@ -60,6 +62,6 @@ public class Player {
 	
 	@Override
 	public int hashCode() {
-		return 31 * this.getClassification() * this.getName() * this.getSurname();
+		return 31 * (Objects.hash(this.getClassification(), this.getName(), this.getSurname()));
 	}
 }
