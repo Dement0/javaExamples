@@ -118,7 +118,7 @@ public class Set {
 	@Override
 	public String toString() {
 		String result = "";
-		for(String history : setHistory) {
+		for(String history : this.setHistory) {
 			result += history + ", ";
 		}
 		return result;
