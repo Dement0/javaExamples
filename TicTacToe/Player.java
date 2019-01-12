@@ -25,7 +25,6 @@ public abstract class Player {
 
 	public abstract boolean hasWon();
 
-	public abstract boolean isValidMove();
 	
 	// Utilities
 	public int hashCode() {

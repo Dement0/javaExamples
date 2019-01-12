@@ -15,17 +15,14 @@ public class HumanPlayer extends Player {
 	@Override
 	public void play() {
 		System.out.println("play method called.");
+		if(!Game.hasFinished()) {
+			Game.nextMove();
+		}
 	}
 
 	@Override
 	public boolean hasWon() {
 		System.out.println("hasWon method called.");
-		return false;
-	}
-	
-	@Override
-	public boolean isValidMove() {
-		System.out.println("isValidMove method called");
 		return false;
 	}
 	

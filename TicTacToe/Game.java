@@ -1,8 +1,8 @@
 public class Game {
 
 	// Attributes
-	private boolean gameOver;
-	private int movesAvailable;
+	private static boolean gameOver;
+	private static int movesAvailable;
 	Player player1, player2;
 	
 	// Constructors
@@ -18,29 +18,38 @@ public class Game {
 	}
 	
 	// Methods
-	public void finishGame() {
-		this.gameOver = true;
+	public static void finishGame() {
+		gameOver = true;
 	}
 	
-	public boolean hasFinished() {
-		return this.gameOver;
+	public static boolean hasFinished() {
+		return gameOver;
 	}
 	
-	public void nextMove() {
-		if(this.movesLeft() > 0) {
-			this.movesAvailable--;
-			System.out.println("Moves left: " + this.movesLeft());
+	public static void nextMove() {
+		if(movesLeft() > 0) {
+			movesAvailable--;
+			System.out.println("Moves left: " + movesLeft());
+		}
+		else {
+			finishGame();
 		}
 	}
 	
-	public int movesLeft() {
-		return this.movesAvailable;
+	public static int movesLeft() {
+		return movesAvailable;
+	}
+	
+	public void play() {
+		while(!hasFinished()) {
+			player1.play();				
+		}
 	}
 	
 	// Utilities
 	@Override
 	public String toString() {
-		return ("Game finished?: " + this.hasFinished() + "\n" + "Moves available: " + this.movesLeft());
+		return ("Game finished?: " + hasFinished() + "\n" + "Moves available: " + movesLeft());
 	}
 	
 }

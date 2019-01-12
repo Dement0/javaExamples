@@ -9,5 +9,8 @@ public class TicTacToe {
 		Game game = new Game(player1, player2);
 		
 		System.out.println(game);
+		System.out.println("-----");
+		
+		game.play();
 	}
 }

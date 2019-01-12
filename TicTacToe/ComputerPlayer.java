@@ -11,6 +11,9 @@ public class ComputerPlayer extends Player {
 	@Override
 	public void play() {
 		System.out.println("play method called.");
+		if(!Game.hasFinished()) {
+			Game.nextMove();
+		}
 	}
 
 	@Override
@@ -19,12 +22,7 @@ public class ComputerPlayer extends Player {
 		return false;
 	}
 	
-	@Override
-	public boolean isValidMove() {
-		System.out.println("isValidMove method called");
-		return false;
-	}
-	
+
 	// Utilities
 	@Override
 	public String toString() {
