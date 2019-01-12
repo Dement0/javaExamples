@@ -9,23 +9,69 @@ public class EventManager {
         Queue<Event> eventQueue = new LinkedList<>();
         // Create a Scanner object
         Scanner scanner = new Scanner(System.in);
-        String input;
+        String input, eventDescription;
+	int eventId, keyboardCode, modificatorState;
+	int mousePositionX, mousePositionY, pressState;
 
         // Ask for input
 	while(true) {
 	    printMenu();
 	    input = scanner.next();
 	    switch(input) {
-		case "1": eventQueue.offer(new EventKeyboard());
-			  System.out.println("Event created.");
+		case "1": System.out.print("Event id: ");
+			  eventId = Integer.parseInt(scanner.next());
+			  System.out.print("Event description: ");
+			  eventDescription = scanner.next();
+			  System.out.print("Keyboard code: ");
+			  keyboardCode = Integer.parseInt(scanner.next());
+			  System.out.print("Keyboard modificator state: ");
+			  modificatorState = Integer.parseInt(scanner.next());
+			  // Create the EventKeyboard object
+			  Event keyboardEvent = new EventKeyboard(eventId, eventDescription, keyboardCode, modificatorState);
+			  // Offer it to the LinkedList
+			  if(eventQueue.offer(keyboardEvent)) {
+			      System.out.println("Event created.");
+			  }
+			  else {
+			      System.out.println("Error, try again.");
+			  }
 			  break;
-		case "2": eventQueue.offer(new EventMouse());
-			  System.out.println("Event created.");
+		case "2": System.out.print("Event id: ");
+			  eventId = Integer.parseInt(scanner.next());
+			  System.out.print("Event description: ");
+			  eventDescription = scanner.next();
+			  System.out.print("Mouse position X: ");
+			  mousePositionX = Integer.parseInt(scanner.next());
+			  System.out.print("Mouse position Y: ");
+			  mousePositionY = Integer.parseInt(scanner.next());
+			  System.out.print("Mouse press state: ");
+			  pressState = Integer.parseInt(scanner.next());
+			  // Create the EventMouse object
+			  Event mouseEvent = new EventMouse(eventId, eventDescription, mousePositionX, mousePositionY, pressState);
+			  // Offer it to the LinkedList
+			  if(eventQueue.offer(mouseEvent)) {
+			      System.out.println("Event created.");
+			  }
+			  else {
+			      System.out.println("Error, try again.");
+			  }
 			  break;
-		case "3": eventQueue.peek();
-			  System.out.println("Event get.");
+		case "3": if(eventQueue.peek() != null) {
+			      System.out.println(eventQueue.peek());
+			      System.out.println("Event get.");
+			  }
+			  else {
+			      System.out.println("No event found.");
+			  }
 			  break;
-		case "4": return;
+		case "4": if(eventQueue.peek() != null) {
+			      System.out.println("Did the event: " + eventQueue.poll());
+			  }
+			  else {
+			      System.out.println("No event to do.");
+			  }
+			  break;
+		case "5": return;
 		default : System.out.println("Not a valid operation.");
 	    }
 	}
@@ -36,7 +82,8 @@ public class EventManager {
         System.out.println("1. Create and insert a new keyboard event");
         System.out.println("2. Create and insert a new mouse event");
         System.out.println("3. Get and visualize an event");
-        System.out.println("4. Exit");
+        System.out.println("4. Realize the next event");
+        System.out.println("5. Exit");
         System.out.print("> ");
     }
 }
