@@ -9,14 +9,6 @@ public class ComputerPlayer extends Player {
 
 	// Methods
 	@Override
-	public void play() {
-		System.out.println("play method called.");
-		if(!Game.hasFinished()) {
-			Game.nextMove();
-		}
-	}
-
-	@Override
 	public boolean hasWon() {
 		System.out.println("hasWon method called.");
 		return false;

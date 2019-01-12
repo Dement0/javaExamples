@@ -21,7 +21,11 @@ public abstract class Player {
 		return this.name;
 	}
 
-	public abstract void play();
+	public void play(int position, String sign) {
+		if(!Game.hasFinished()) {
+			Game.board.set(position, sign);
+		}
+	}
 
 	public abstract boolean hasWon();
 

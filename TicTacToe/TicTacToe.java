@@ -8,9 +8,6 @@ public class TicTacToe {
 		// Create new game
 		Game game = new Game(player1, player2);
 		
-		System.out.println(game);
-		System.out.println("-----");
-		
 		game.play();
 	}
 }
