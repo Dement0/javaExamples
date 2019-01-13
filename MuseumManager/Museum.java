@@ -55,17 +55,35 @@ public class Museum {
 		arts.add(art);
 	}	
 	
-	public void deleteArt(Artwork artToDelete) {
+	public boolean deleteArt(Artwork artToDelete) {
 		// ArrayList to add the Artwork to be deleted
 		//https://stackoverflow.com/questions/8104692/how-to-avoid-java-util-concurrentmodificationexception-when-iterating-through-an
+		boolean canDelete = false;
 		List<Artwork> newArtsList = new ArrayList<>();
 		for(Artwork art : arts) {
 			if(art.equals(artToDelete)) {
 				newArtsList.add(art);
+				canDelete = true;
 			}
 		}
-		arts.removeAll(newArtsList);
-		System.out.println("Deleted successfully.");
+		if(canDelete) {
+			arts.removeAll(newArtsList);
+			System.out.println("Deleted successfully.");
+		}
+		newArtsList = null;
+		return canDelete;
+	}
+	
+	public Artwork searchArtByName(String title) {
+		if(!title.isEmpty()) {
+			// Search with a for loop
+			for(Artwork art : arts) {
+				if(art.getTitle().equals(title)) {
+					return art;
+				}
+			}
+		}
+		return null;
 	}
 
 	
