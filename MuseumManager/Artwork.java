@@ -53,4 +53,14 @@ public class Artwork {
 	public String toString() {
 		return "Title: " + this.getTitle() + ", Author: " + this.getAuthor() + ", Date: " + this.getCreationDate();
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(other instanceof Artwork) {
+			// Cast it to Artwork
+			Artwork otherArtwork = (Artwork) other;
+			return (this.getTitle() == otherArtwork.getTitle() && this.getAuthor() == otherArtwork.getAuthor() && this.getCreationDate() == otherArtwork.getCreationDate());
+		}
+		return false;
+	}
 }

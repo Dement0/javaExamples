@@ -52,4 +52,14 @@ public class Painting extends Artwork {
 	public String toString() {
 		return super.toString() + ", Technique: " + this.getTechnique() + ", Dimensions: " + this.getDimensions();
 	}
+	
+		@Override
+	public boolean equals(Object other) {
+		if(other instanceof Painting) {
+			// Cast it to Painting
+			Painting otherPainting = (Painting) other;
+			return (this.getTitle() == otherPainting.getTitle() && this.getAuthor() == otherPainting.getAuthor() && this.getCreationDate() == otherPainting.getCreationDate() &&  this.getTechnique() == otherPainting.getTechnique() && this.getDimensions() == otherPainting.getDimensions());
+		}
+		return false;
+	}
 }

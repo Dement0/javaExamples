@@ -52,4 +52,14 @@ public class Sculpture extends Artwork {
 	public String toString() {
 		return super.toString() + ", Material: " + this.getMaterial() + ", Height: " + this.getHeight();
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(other instanceof Sculpture) {
+			// Cast it to Sculpture
+			Sculpture otherSculpture = (Sculpture) other;
+			return (this.getTitle() == otherSculpture.getTitle() && this.getAuthor() == otherSculpture.getAuthor() && this.getCreationDate() == otherSculpture.getCreationDate() && this.getMaterial() == otherSculpture.getMaterial() && this.getHeight() == otherSculpture.getHeight());
+		}
+		return false;
+	}
 }
