@@ -42,11 +42,45 @@ public class User {
 		this.surname = surname;
 	}
 	
+	public String getSurname() {
+		return this.surname;
+	}
+	
 	public void setCurrentCredit(double currentCredit) {
 		this.currentCredit = currentCredit;
 	}
 	
 	public double getCurrentCredit() {
 		return this.currentCredit;
+	}
+	
+	public void addDebt(double debt) {
+		this.debts.add(debt);
+	}
+	
+	public double getDebts() {
+		double result = 0.00d;
+		if(!(this.debts.isEmpty())) {
+			for(Double debt : debts) {
+				result += debt;
+			}
+		}
+		return result;
+	}
+	
+	// Utilities
+	@Override
+	public String toString() {
+		return this.getName() + " " + this.getSurname() + ", " + this.getTelNumber();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(other instanceof User) {
+			return this.getName().equals(other.getName()) && 
+				   this.getSurname().equals(other.getSurname()) && 
+				   this.getTelNumber().equals(other.getTelNumber());
+		}
+		return false;
 	}
 }
