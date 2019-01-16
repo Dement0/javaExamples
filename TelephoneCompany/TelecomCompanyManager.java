@@ -11,22 +11,40 @@ public class TelecomCompanyManager {
 		
 		// References
 		String input;
-		String name, surname, telNumber;
+		String name, surname, telNumber, numToVerify;
 		double actualCredit = 0.00D;
 		double creditToRecharge = 0.00D;
 		double debts = 0.00D;
 		
-		// Scanner Object
+		// Objects
 		Scanner reader = new Scanner(System.in);
+		TelephoneCompany myCompany = new TelephoneCompany();
+		myCompany.addUser(new User("Example", "Foo", "Bar"));
+		myCompany.getUser("Example").setCurrentCredit(5.50);
+		System.out.println(myCompany.isCreditPositive("Example"));
+		myCompany.getUser("Example").recharge(3.00);
+		System.out.println(myCompany.getUser("Example").getCurrentCredit());
+		myCompany.getUser("Example").charge(9, "01.01.2019");
+		System.out.println(myCompany.getUser("Example").getCurrentCredit());
 		
 		// Execute the main program
 		while(true) {
 			printMenu();
 			input = reader.next();
 			switch(input) {
-				case "1": System.out.println("Inserted the new user.");
+				case "1": System.out.print("Tel number: ");
+						  telNumber = reader.next();
+						  System.out.print("Name: ");
+						  name = reader.next();
+						  System.out.print("Surname: ");
+						  surname = reader.next();
+						  myCompany.addUser(new User(telNumber, name, surname));
+						  System.out.println("> Inserted the new user.");
+						  System.out.println(myCompany);
 					break;
-				case "2": System.out.println("Verified the number availability.");
+				case "2": System.out.print("> Tel number to verify availability: ");
+						  numToVerify = reader.next();
+						  System.out.println(myCompany.hasNumber(numToVerify) ? "> Not available" : "> Available");
 					break;
 				case "3": System.out.println("Recharged the number.");
 					break;
@@ -42,7 +60,7 @@ public class TelecomCompanyManager {
 	
 	public static void printMenu() {
 		System.out.println("------ Telecom Company Manager ------");
-		System.out.print("Please enter the corresponding number for the operation you want to execute");
+		System.out.println("Please enter the corresponding number for the operation you want to execute");
 		System.out.println("1. Insert a new user");
 		System.out.println("2. Verify that a new number is available");
 		System.out.println("3. Recharge a number");

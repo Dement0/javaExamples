@@ -6,7 +6,8 @@ public class User {
 	// Attributes
 	private String telNumber, name, surname;
 	private double currentCredit;
-	private List<Double> debts;
+	private List<String> debts;
+	private Database db;
 	
 	// Constructors
 	public User() {
@@ -18,7 +19,7 @@ public class User {
 		setName(name);
 		setSurname(surname);
 		setCurrentCredit(0.00D);
-		this.debts = new ArrayList<Double>();
+		this.debts = new ArrayList<String>();
 	}
 	
 	// Setters & Getters
@@ -55,17 +56,30 @@ public class User {
 	}
 	
 	public void addDebt(double debt) {
-		this.debts.add(debt);
+		this.debts.add("" + debt);
 	}
 	
-	public double getDebts() {
-		double result = 0.00d;
+	public String getDebts() {
+		String result = "";
 		if(!(this.debts.isEmpty())) {
-			for(Double debt : debts) {
-				result += debt;
+			for(String debt : debts) {
+				result += debt + "\n";
 			}
 		}
 		return result;
+	}
+	
+	// Methods
+	public void recharge(double amount) {
+		double currentCredit = this.getCurrentCredit();
+		currentCredit += amount;
+		this.setCurrentCredit(currentCredit);
+	}
+	
+	public void charge(double debt, String date) {
+		this.recharge(-debt);
+		String debtToRegister = debt + " - "+ date;
+		debts.add(debtToRegister);
 	}
 	
 	// Utilities
