@@ -1,4 +1,4 @@
-import java.util.list;
+import java.util.List;
 import java.util.ArrayList;
 
 public class User {
@@ -77,9 +77,11 @@ public class User {
 	@Override
 	public boolean equals(Object other) {
 		if(other instanceof User) {
-			return this.getName().equals(other.getName()) && 
-				   this.getSurname().equals(other.getSurname()) && 
-				   this.getTelNumber().equals(other.getTelNumber());
+		// Cast it to User
+		User otherUser = (User) other;
+			return this.getName().equals(otherUser.getName()) && 
+				   this.getSurname().equals(otherUser.getSurname()) && 
+				   this.getTelNumber().equals(otherUser.getTelNumber());
 		}
 		return false;
 	}
