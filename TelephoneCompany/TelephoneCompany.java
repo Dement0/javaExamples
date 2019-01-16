@@ -53,11 +53,31 @@ public class TelephoneCompany {
 		}
 	}
 	
-	public void chargeNumber(String telNumber, double debt, String date) {
+	public boolean canChargeNumber(String telNumber) {
+		return this.getUser(telNumber).getCurrentCredit() > 0;
+	}
+	
+	public boolean chargeNumber(String telNumber, double debt, String date) {
 		// Inserts debt to a tel number
-		if(this.hasNumber(telNumber)) {
+		if(this.hasNumber(telNumber) && this.canChargeNumber(telNumber)) {
 			this.getUser(telNumber).charge(debt, date);
+			return true;
 		}
+		return false;
+	}
+
+	public double getCurrentCredit(String telNumber) {
+		if(this.hasNumber(telNumber)) {
+			return this.getUser(telNumber).getCurrentCredit();
+		}
+		return 0.00D;
+	}
+	
+	public String getDebts(String telNumber) {
+		if(hasNumber(telNumber)) {
+			return this.getUser(telNumber).getDebts();
+		}
+		return "";
 	}
 	
 	// Utilities

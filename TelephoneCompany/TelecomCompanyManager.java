@@ -11,10 +11,8 @@ public class TelecomCompanyManager {
 		
 		// References
 		String input;
-		String name, surname, telNumber, numToVerify;
-		double actualCredit = 0.00D;
-		double creditToRecharge = 0.00D;
-		double debts = 0.00D;
+		String name, surname, telNumber, numToVerify, numToRecharge, numToCheck, date;
+		double amount;
 		
 		// Objects
 		Scanner reader = new Scanner(System.in);
@@ -46,11 +44,40 @@ public class TelecomCompanyManager {
 						  numToVerify = reader.next();
 						  System.out.println(myCompany.hasNumber(numToVerify) ? "> Not available" : "> Available");
 					break;
-				case "3": System.out.println("Recharged the number.");
+				case "3": System.out.print("> Tel number to recharge: ");
+						  numToRecharge = reader.next();
+						  if(myCompany.hasNumber(numToRecharge)) {
+						  	System.out.print("> Amount to recharge: ");
+						  	amount = Double.parseDouble(reader.next());
+						  	myCompany.rechargeNumber(numToRecharge, amount);
+						  	System.out.println("Recharged the number " + amount + "€.");
+						  }
+						  else {
+						  	System.out.println("No such number.");
+						  }
 					break;
-				case "4": System.out.println("Controlled the actual credit.");
+				case "4": System.out.print("> Tel number to control the actual credit: ");
+						  numToCheck = reader.next();
+						  System.out.print("> Amount to charge as debt: ");
+						  amount = Double.parseDouble(reader.next());
+						  System.out.print("> Date to insert: ");
+						  date = reader.next();
+						  if(myCompany.chargeNumber(numToCheck, amount, date)) {
+						    
+						  	System.out.println("Successfully charged with debt. Current credit: " + 												myCompany.getCurrentCredit(numToCheck));
+						  }
+						  else {
+						  	System.out.println("Error.");
+						  }
 					break;
-				case "5": System.out.println("Printed the debts.");
+				case "5": System.out.print("> Tel number to print debts: ");
+						  numToCheck = reader.next();
+						  if(myCompany.hasNumber(numToCheck)) {
+						  	System.out.println(myCompany.getDebts(numToCheck));
+						  }
+						  else {
+						  	System.out.println("No such number.");
+						  }
 					break;
 				case "6": return;
 				default : System.out.println("Not a valid operation!");
@@ -64,7 +91,7 @@ public class TelecomCompanyManager {
 		System.out.println("1. Insert a new user");
 		System.out.println("2. Verify that a new number is available");
 		System.out.println("3. Recharge a number");
-		System.out.println("4. Control that the credit of a number is positive, if not charge a debit");
+		System.out.println("4. Control that the credit of a number is positive, eventually charge him with debt");
 		System.out.println("5. Print the debts of a number");
 		System.out.println("6. Exit");
 		System.out.print("> ");
