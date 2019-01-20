@@ -17,13 +17,6 @@ public class TelecomCompanyManager {
 		// Objects
 		Scanner reader = new Scanner(System.in);
 		TelephoneCompany myCompany = new TelephoneCompany();
-		myCompany.addUser(new User("Example", "Foo", "Bar"));
-		myCompany.getUser("Example").setCurrentCredit(5.50);
-		System.out.println(myCompany.isCreditPositive("Example"));
-		myCompany.getUser("Example").recharge(3.00);
-		System.out.println(myCompany.getUser("Example").getCurrentCredit());
-		myCompany.getUser("Example").charge(9, "01.01.2019");
-		System.out.println(myCompany.getUser("Example").getCurrentCredit());
 		
 		// Execute the main program
 		while(true) {
