@@ -28,7 +28,9 @@ public class TelephoneCompany {
 	
 	// Methods
 	public void addUser(User user) {
-		this.users.put(user.getTelNumber(), user);
+		if(!(this.hasNumber(user.getTelNumber()))) {
+		  this.users.put(user.getTelNumber(), user);
+		}
 	}
 	
 	public User getUser(String telNumber) {
