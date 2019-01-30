@@ -23,16 +23,15 @@ public class Book implements ToBeStored{
     public String getName() {
         return this.name;
     }
-    
-    public double getWeight() {
+        
+    @Override
+    public double weight() {
         return this.weight;
     }
     
-    @Override
-    public double weight() {
-        return 0.00;
-    }
-    
     // Utilities
-    
+    @Override
+    public String toString() {
+        return this.getWriter() + ": " + this.getName();
+    }   
 }
