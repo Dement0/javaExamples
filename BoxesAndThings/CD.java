@@ -6,6 +6,10 @@ public class CD implements ToBeStored {
     private final double weight;
     
     // Constructors
+    public CD() {
+        this("-", "-", 0);
+    }
+    
     public CD (String artist, String title, int publishingYear) {
         this.artist = artist;
         this.title = title;
@@ -25,16 +29,16 @@ public class CD implements ToBeStored {
     public int getPublishingYear() {
         return this.publishingYear;
     }
-    
-    public double getWeight() {
+        
+    @Override
+    public double weight() {
         return this.weight;
     }
     
-    @Override
-    public double weight() {
-        return 0.00;
-    }
-    
     // Utilities
-        
+    @Override
+    public String toString() {
+        return this.getArtist() + ": " + this.getTitle() + " (" + 
+               this.getPublishingYear() + ")";
+    }
 }
