@@ -44,7 +44,7 @@ public class Storehouse {
         // Decreases the stock of the parameter product by one
         // returns true if the object was available in the storehouse
         if(this.stock(product) > 0) {
-            this.stocks.put(product, 0);
+            this.stocks.put(product, this.stocks.get(product) - 1);
             return true;
         }
         return false;
