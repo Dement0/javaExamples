@@ -6,5 +6,8 @@
   - Setters & Getters
   - Utilities
   - Overrides
-- Collections Framework implementations
+- Inheritance
 - Abstract Classes and interfaces
+- Collections Framework implementations
+- Generics
+
