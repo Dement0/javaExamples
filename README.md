@@ -7,7 +7,8 @@
   - Utilities
   - Overrides
 - Inheritance
-- Abstract Classes and interfaces
+- Abstract Classes and Interfaces
+- Exceptions
 - Collections Framework implementations
 - Generics
-
+- Data Structures
