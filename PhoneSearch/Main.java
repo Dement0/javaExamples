@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -8,7 +10,15 @@ public class Main {
         
         // Scanner object
         Scanner scanner = new Scanner(System.in);
-        String input;
+        
+        // References
+        String address, city, input, keyword, name, number, street;
+        Contact contact;
+        
+        // PhoneBook object
+        PhoneBook phoneBook = new PhoneBook();
+        
+        List<Contact> keywordSearchResults = new ArrayList<Contact>();
         
         // Print menu
         while(true) {
@@ -18,24 +28,101 @@ public class Main {
             input = scanner.next();
             
             // Switch according to input
-            switch(input) {
-                case "1": System.out.println("Entered 1");
-                    break;
-                case "2": System.out.println("Entered 2");
-                    break;
-                case "3": System.out.println("Entered 3");
-                    break;
-                case "4": System.out.println("Entered 4");
-                    break;
-                case "5": System.out.println("Entered 5");
-                    break;
-                case "6": System.out.println("Entered 6");
-                    break;
-                case "7": System.out.println("Entered 7");
-                    break;
-                case "x": System.out.println("Quiting...");
+            if("1".equals(input)) {
+                    System.out.print("whose number: ");
+                    name = scanner.next();
+                    System.out.print("number: ");
+                    number = scanner.next();
+                    
+                    // Check if contact exists, else create if
+                    if(!phoneBook.containsContact(name)) {
+                        contact = new Contact(name);
+                    } else {
+                        contact = phoneBook.getContactByName(name);
+                    }
+                    contact.addNumber(number);
+                    
+                    // Insert contact
+                    phoneBook.addNumber(contact, number);
+                    System.out.println("");
+            } else if("2".equals(input)) {
+                    System.out.print("whose number: ");
+                    name = scanner.next();
+                    
+                    // If exists print number, else "  not found"
+                    if(!phoneBook.containsContact(name)) {
+                        System.out.println("  not found");
+                    } else {
+                        phoneBook.getContactByName(name).printNumbers();
+                    }
+            } else if("3".equals(input)) {
+                    System.out.print("number: ");
+                    number = scanner.next();
+                  
+                    // If number exists print name, else "  not found"
+                    if(phoneBook.getContactByNumber(number) == null) {
+                        System.out.println("  not found");
+                    } else {
+                        System.out.println(" " + phoneBook.getContactByNumber(number).getName());
+                    }
+            } else if("4".equals(input)) {
+                    System.out.print("whose address: ");
+                    name = scanner.next();
+                    System.out.print("street: ");
+                    street = scanner.next();
+                    System.out.print("city: ");
+                    city = scanner.next();
+                    address = street + " " + city;
+                    
+                    // Check if contact exists, else create it
+                    if(phoneBook.getContactByName(name) == null) {
+                        contact = new Contact(name);
+                        phoneBook.addNumber(contact, "");
+                    }
+                    
+                    // Add address
+                    phoneBook.getContactByName(name).addAddress(address);
+                    System.out.println("");
+            } else if("5".equals(input)) {
+                    System.out.print("whose information: ");
+                    name = scanner.next();
+                                       
+                    // If contact does not exist, print "  not found"
+                    if(!phoneBook.containsContact(name)) {
+                        System.out.println("  not found");
+                    }
+                    
+                    // Else print numbers
+                    System.out.println(phoneBook.getContactByName(name));
+            } else if("6".equals(input)) {
+                    System.out.print("whose information: ");
+                    name = scanner.next();
+                    
+                    // Delete contact
+                    contact = phoneBook.getContactByName(name);
+                    if(contact != null) {
+                        phoneBook.deleteContact(contact);
+                    }
+            } else if("7".equals(input)) {
+                    System.out.print("keyword (if empty, all listed): ");
+                    keyword = scanner.next();
+                    keywordSearchResults = phoneBook.searchWithKeyword(keyword);
+                    
+                    if(keywordSearchResults.isEmpty()) {
+                        System.out.println(" keyword not found");
+                    } else {
+                        System.out.println("");
+
+                        for(Contact result : keywordSearchResults) {
+                            System.out.println(" " + result.getName());
+                            System.out.println(result);
+                            System.out.println();
+                        }
+                    }
+            } else if("x".equals(input)) {
                     return;
-                default: System.out.println("Not a valid operation!");
+            } else {
+                System.out.println("Not a valid operation!");
             }
         }
     }
@@ -51,5 +138,7 @@ public class Main {
         System.out.println(" 6 delete personal information");
         System.out.println(" 7 filtered listing");
         System.out.println(" x quit");
+        System.out.println("");
+        System.out.print("command: ");
     }
 }
