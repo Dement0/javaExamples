@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +36,9 @@ public class RingingCentre {
         if(this.observationPlaces.containsKey(bird)) {
             for(Bird birdObserved : this.observationPlaces.keySet()) {
                 if(birdObserved.equals(bird)) {
+                    
                     // Increment the observedTime
-                    observedTime++;
+                    observedTime = this.observationPlaces.get(birdObserved).size();
                 }
             }
         }
